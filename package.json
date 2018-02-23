@@ -1,0 +1,32 @@
+{
+  "name": "sort",
+  "version": "1.0.0",
+  "description": "All kinds of sort algorithm",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint src test --fix",
+    "pre-commit": "npm run lint && npm test"
+  },
+  "pre-commit": "pre-commit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanni4night/sort.git"
+  },
+  "keywords": [
+    "sort"
+  ],
+  "author": "yanni4night@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yanni4night/sort/issues"
+  },
+  "homepage": "https://github.com/yanni4night/sort#readme",
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "mocha": "^5.0.1",
+    "pre-commit": "^1.2.2"
+  }
+}
