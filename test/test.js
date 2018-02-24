@@ -15,6 +15,7 @@ const fixtures = require('./fixtures');
 
 const radix = require('../src/distribution/radix');
 const bubble = require('../src/exchange/bubble');
+const straight = require('../src/insertion/straight');
 
 /* global it, describe */
 describe('distribution', () => {
@@ -35,6 +36,16 @@ describe('exchange', () => {
     fixtures.forEach((fixture) => {
       it(`should sort [${fixture.join()}]`, () => {
         assert.deepEqual(bubble(fixture), fixture.sort());
+      });
+    });
+  });
+});
+
+describe('insertion', () => {
+  describe('#straight', () => {
+    fixtures.forEach((fixture) => {
+      it(`should sort [${fixture.join()}]`, () => {
+        assert.deepEqual(straight(fixture), fixture.sort());
       });
     });
   });
