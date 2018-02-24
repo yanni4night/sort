@@ -4,15 +4,17 @@
  *
  * changelog
  * 2018-02-23[21:02:55]:revised
+ * 2018-02-24[15:54:06]:test bubble
  *
  * @author yanni4night@gmail.com
- * @version 1.0.0
+ * @version 1.1.0
  * @since 1.0.0
  */
 const assert = require('assert');
 const fixtures = require('./fixtures');
 
 const radix = require('../src/distribution/radix');
+const bubble = require('../src/exchange/bubble');
 
 /* global it, describe */
 describe('distribution', () => {
@@ -23,6 +25,16 @@ describe('distribution', () => {
       });
       it(`should sort [${fixture.join()}] in hexadecimal`, () => {
         assert.deepEqual(radix(fixture, 16), fixture.sort());
+      });
+    });
+  });
+});
+
+describe('exchange', () => {
+  describe('#bubble', () => {
+    fixtures.forEach((fixture) => {
+      it(`should sort [${fixture.join()}]`, () => {
+        assert.deepEqual(bubble(fixture), fixture.sort());
       });
     });
   });
