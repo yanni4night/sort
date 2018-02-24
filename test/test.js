@@ -13,9 +13,9 @@
 const assert = require('assert');
 const fixtures = require('./fixtures');
 
-const radix = require('../src/distribution/radix');
-const bubble = require('../src/exchange/bubble');
-const straight = require('../src/insertion/straight');
+const {
+  radix, bubble, straight, binary,
+} = require('../');
 
 /* global it, describe */
 describe('distribution', () => {
@@ -46,6 +46,13 @@ describe('insertion', () => {
     fixtures.forEach((fixture) => {
       it(`should sort [${fixture.join()}]`, () => {
         assert.deepEqual(straight(fixture), fixture.sort());
+      });
+    });
+  });
+  describe('#binary', () => {
+    fixtures.forEach((fixture) => {
+      it(`should sort [${fixture.join()}]`, () => {
+        assert.deepEqual(binary(fixture), fixture.sort());
       });
     });
   });
