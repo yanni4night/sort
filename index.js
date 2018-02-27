@@ -12,5 +12,6 @@
 
 exports.radix = require('./src/distribution/radix');
 exports.bubble = require('./src/exchange/bubble');
+exports.quick = require('./src/exchange/quick');
 exports.straight = require('./src/insertion/straight');
 exports.binary = require('./src/insertion/binary');

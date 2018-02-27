@@ -39,14 +39,14 @@ module.exports = function radixsort(data, RADIX = 10) {
 
   for (let i = 1, radix = 1; i <= maxbit; i += 1, radix *= RADIX) {
     // count: [0,0,0,0,0,0,0,0,0,0]
-    for (let j = 1; j < RADIX; j += 1) {
+    for (let j = 0; j < RADIX; j += 1) {
       count[j] = 0;
     }
 
     // count numbers on that bit
     // count: [1,1,1,1,1,1,1,1,1,1]
     for (let j = 0; j < data.length; j += 1) {
-      const k = Math.floor((data[j] / radix) % RADIX);
+      const k = Math.floor(data[j] / radix) % RADIX;
       count[k] += 1;
     }
 
@@ -68,7 +68,7 @@ module.exports = function radixsort(data, RADIX = 10) {
     // j:1, data[j]:6, tmp: [0,1,2,3,4,5,6,7,8,0]
     // j:0, data[j]:9, tmp: [0,1,2,3,4,5,6,7,8,9]
     for (let j = data.length - 1; j >= 0; j -= 1) {
-      const k = Math.floor((data[j] / radix) % RADIX);
+      const k = Math.floor(data[j] / radix) % RADIX;
       tmp[count[k] - 1] = data[j];
       count[k] -= 1;
     }

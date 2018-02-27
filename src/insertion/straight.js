@@ -14,10 +14,11 @@
 module.exports = function straight(data) {
   for (let i = 1; i < data.length; i += 1) {
     const tmp = data[i];
-    for (let j = i; j > 0 && data[j - 1] > tmp; j -= 1) {
+    let j = i;
+    for (; j > 0 && data[j - 1] > tmp; j -= 1) {
       data[j] = data[j - 1];
     }
-    data[i] = tmp;
+    data[j] = tmp;
   }
 
   return data;

@@ -14,18 +14,20 @@ const assert = require('assert');
 const fixtures = require('./fixtures');
 
 const {
-  radix, bubble, straight, binary,
+  radix, bubble, straight, binary, quick,
 } = require('../');
 
 /* global it, describe */
 describe('distribution', () => {
   describe('#radix', () => {
     fixtures.forEach((fixture) => {
-      it(`should sort [${fixture.join()}] in decimalism`, () => {
-        assert.deepEqual(radix(fixture), fixture.sort());
+      const expected = fixture.slice().sort();
+
+      it(`should sort [${fixture}] in decimalism`, () => {
+        assert.deepEqual(radix(fixture.slice()), expected);
       });
-      it(`should sort [${fixture.join()}] in hexadecimal`, () => {
-        assert.deepEqual(radix(fixture, 16), fixture.sort());
+      it(`should sort [${fixture}] in hexadecimal`, () => {
+        assert.deepEqual(radix(fixture.slice(), 16), expected);
       });
     });
   });
@@ -34,8 +36,19 @@ describe('distribution', () => {
 describe('exchange', () => {
   describe('#bubble', () => {
     fixtures.forEach((fixture) => {
-      it(`should sort [${fixture.join()}]`, () => {
-        assert.deepEqual(bubble(fixture), fixture.sort());
+      const expected = fixture.slice().sort();
+
+      it(`should sort [${fixture}]`, () => {
+        assert.deepEqual(bubble(fixture.slice()), expected);
+      });
+    });
+  });
+  describe('#quick', () => {
+    fixtures.forEach((fixture) => {
+      const expected = fixture.slice().sort();
+
+      it(`should sort [${fixture}]`, () => {
+        assert.deepEqual(quick(fixture.slice()), expected);
       });
     });
   });
@@ -44,15 +57,19 @@ describe('exchange', () => {
 describe('insertion', () => {
   describe('#straight', () => {
     fixtures.forEach((fixture) => {
-      it(`should sort [${fixture.join()}]`, () => {
-        assert.deepEqual(straight(fixture), fixture.sort());
+      const expected = fixture.slice().sort();
+
+      it(`should sort [${fixture}]`, () => {
+        assert.deepEqual(straight(fixture.slice()), expected);
       });
     });
   });
   describe('#binary', () => {
     fixtures.forEach((fixture) => {
-      it(`should sort [${fixture.join()}]`, () => {
-        assert.deepEqual(binary(fixture), fixture.sort());
+      const expected = fixture.slice().sort();
+
+      it(`should sort [${fixture}]`, () => {
+        assert.deepEqual(binary(fixture.slice()), expected);
       });
     });
   });

@@ -21,22 +21,22 @@ module.exports = function binary(data) {
 
     // 3/4/6/7  5
 
-    while (end > start) {
+    while (end >= start) {
       middle = Math.floor((end + start) / 2);
-      if (middle === start) {
-        break;
-      }
+
       if (tmp > data[middle]) {
-        start = middle;
+        start = middle + 1;
       } else {
-        end = middle;
+        end = middle - 1;
       }
     }
 
-    for (let j = i; j > start; j -= 1) {
+    let j = i;
+
+    for (; j > start; j -= 1) {
       data[j] = data[j - 1];
     }
-    data[start] = tmp;
+    data[j] = tmp;
   }
 
   return data;
